@@ -10,9 +10,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+        <java.version>9</java.version>
         <blocoio.version>1.2.7</blocoio.version>
-        <datafaker.version>1.5.0-SNAPSHOT</datafaker.version>
+        <datafaker.version>1.7.0-SNAPSHOT</datafaker.version>
         <javafaker.version>1.0.2</javafaker.version>
         <jfairy.version>0.6.5</jfairy.version>
         <jmh.version>1.35</jmh.version>
@@ -20,9 +20,23 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <uberjar.name>benchmarks</uberjar.name>
+        <mockneat.version>0.4.2</mockneat.version>
+        <uberjar.name>benchmarks</uberjar.name>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>jcenter</id>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
+        <dependency>
+            <groupId>net.andreinc.mockneat</groupId>
+            <artifactId>mockneat</artifactId>
+            <version>${mockneat.version}</version>
+        </dependency>
         <dependency>
             <groupId>io.github.serpro69</groupId>
             <artifactId>kotlin-faker</artifactId>
