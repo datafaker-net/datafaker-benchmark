@@ -13,9 +13,8 @@
         <java.version>9</java.version>
         <blocoio.version>1.2.7</blocoio.version>
         <datafaker.version>1.7.0-SNAPSHOT</datafaker.version>
-        <java.version>1.8</java.version>
         <blocoio.version>1.2.7</blocoio.version>
-        <datafaker.version>1.5.0-SNAPSHOT</datafaker.version>
+        <datafaker.version>1.7.0-SNAPSHOT</datafaker.version>
         <javafaker.version>1.0.2</javafaker.version>
         <jfairy.version>0.6.5</jfairy.version>
         <jmh.version>1.35</jmh.version>
@@ -79,8 +78,8 @@
                 <version>3.8.0</version>
                 <configuration>
                     <compilerVersion>${maven.compiler.source}</compilerVersion>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+                    <source>9</source>
+                    <target>9</target>
                 </configuration>
             </plugin>
             <plugin>
