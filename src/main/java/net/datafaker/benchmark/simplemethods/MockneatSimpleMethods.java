@@ -1,6 +1,6 @@
 package net.datafaker.benchmark.simplemethods;
 
-import net.datafaker.fileformats.Format;
+import net.datafaker.formats.Format;
 import net.datafaker.providers.base.Name;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
