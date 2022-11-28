@@ -1,5 +1,6 @@
-package net.datafaker.benchmark.simplemethods;
+package net.datafaker.benchmark.password;
 
+import net.datafaker.benchmark.simplemethods.DatafakerSimpleMethods;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
@@ -13,20 +14,18 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 @State(Scope.Benchmark)
 @Fork(value = 2, jvmArgs = {"-Xms2G", "-Xmx2G"})
-public class DatafakerSimpleMethods {
+public class DatafakerPassword {
     private static final net.datafaker.Faker DATA_FAKER = new net.datafaker.Faker();
-
     public static void main(String[] args) throws RunnerException {
 
         Options opt = new OptionsBuilder()
-                .include(DatafakerSimpleMethods.class.getSimpleName())
+                .include(DatafakerPassword.class.getSimpleName())
                 .build();
 
         new Runner(opt).run();
@@ -34,25 +33,25 @@ public class DatafakerSimpleMethods {
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    public void firstname(Blackhole blackhole) {
-        blackhole.consume(DATA_FAKER.name().firstName());
+    public void password10(Blackhole blackhole) {
+        blackhole.consume(DATA_FAKER.internet().password(10, 10));
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    public void fullname(Blackhole blackhole) {
-        blackhole.consume(DATA_FAKER.name().name());
+    public void password10WithUpper(Blackhole blackhole) {
+        blackhole.consume(DATA_FAKER.internet().password(10, 10, true));
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    public void streetAddress(Blackhole blackhole) {
-        blackhole.consume(DATA_FAKER.address().streetAddress());
+    public void password10WithUpperLower(Blackhole blackhole) {
+        blackhole.consume(DATA_FAKER.internet().password(10, 10, true, true));
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    public void numberBetween(Blackhole blackhole) {
-        blackhole.consume(DATA_FAKER.number().numberBetween(-5, 5));
+    public void password10WithUpperLowerDigit(Blackhole blackhole) {
+        blackhole.consume(DATA_FAKER.internet().password(10, 10, true, true, true));
     }
 }

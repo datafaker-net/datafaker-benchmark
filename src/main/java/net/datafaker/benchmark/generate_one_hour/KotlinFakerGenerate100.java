@@ -27,7 +27,7 @@ public class KotlinFakerGenerate100 {
             person.setPlace(faker.getAddress().fullAddress());
            // person.setBlood(name.bloodGroup());
             person.setJob(faker.getJob().title());
-            person.setPhone(faker.getPhoneNumber().cellPhone());
+            person.setPhone(faker.getPhoneNumber().getCellPhone().number());
             person.setBirthday(birthday(faker));
             if ((i + 1) % 1000_000 == 0) {
                 System.out.println(new Date() + " " + (i + 1) + " " + (System.nanoTime() - start));

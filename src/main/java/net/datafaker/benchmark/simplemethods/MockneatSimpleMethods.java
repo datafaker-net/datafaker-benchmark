@@ -40,7 +40,6 @@ public class MockneatSimpleMethods {
     @BenchmarkMode(Mode.Throughput)
     public void firstname(Blackhole blackhole) {
         blackhole.consume(csvs()
-                .column(intSeq())
                 .column(names().first())
                 .column(names().last())
                 .separator("|")
@@ -55,9 +54,9 @@ public class MockneatSimpleMethods {
                         DATA_FAKER.<Name>collection()
                                 .suppliers(DATA_FAKER::name)
                                 .build())
-                .headers(() -> "first_name", () -> "last_name")
                 .columns(Name::firstName, Name::lastName)
-                .separator(" ; ")
+                .header(false)
+                .separator("|")
                 .limit(10).build().get());
     }
 
