@@ -34,24 +34,24 @@ public class JavafakerExpressions {
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     public void bothify(Blackhole blackhole) {
-        blackhole.consume(JAVA_FAKER.bothify("foo???bar###", false));
+        blackhole.consume(JAVA_FAKER.expression("#{bothify 'foo???bar###'}"));
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     public void letterify(Blackhole blackhole) {
-        blackhole.consume(JAVA_FAKER.letterify("foo???", true));
+        blackhole.consume(JAVA_FAKER.expression("#{letterify 'foo???'}"));
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     public void numerify(Blackhole blackhole) {
-        blackhole.consume(JAVA_FAKER.numerify("123###"));
+        blackhole.consume(JAVA_FAKER.expression("#{numerify '123###'}"));
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     public void regexify(Blackhole blackhole) {
-        blackhole.consume(JAVA_FAKER.regexify("'\\.\\*\\?\\+'"));
+        blackhole.consume(JAVA_FAKER.expression("#{regexify '\\.\\*\\?\\+'}"));
     }
 }

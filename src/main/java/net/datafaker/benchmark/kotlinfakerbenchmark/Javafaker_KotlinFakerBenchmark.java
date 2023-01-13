@@ -31,7 +31,7 @@ public class Javafaker_KotlinFakerBenchmark {
     }
 
     @Benchmark
-    @BenchmarkMode(Mode.Throughput)
+    @BenchmarkMode(Mode.AverageTime)
     public void kotlinFakerTest(Blackhole blackhole) {
         Faker faker = new Faker();
         for (int i = 0; i < 1000_000; i++) {

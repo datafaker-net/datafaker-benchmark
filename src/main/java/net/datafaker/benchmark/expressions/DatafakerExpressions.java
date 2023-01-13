@@ -33,31 +33,25 @@ public class DatafakerExpressions {
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    public void bothifyExpression(Blackhole blackhole) {
-        blackhole.consume(DATA_FAKER.expression("#{bothify '????','false'}"));
+    public void bothify(Blackhole blackhole) {
+        blackhole.consume(DATA_FAKER.expression("#{bothify 'foo???bar###'}"));
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    public void letterifyExpression(Blackhole blackhole) {
-        blackhole.consume(DATA_FAKER.expression("#{letterify '????','true'}"));
+    public void letterify(Blackhole blackhole) {
+        blackhole.consume(DATA_FAKER.expression("#{letterify 'foo???'}"));
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     public void numerify(Blackhole blackhole) {
-        blackhole.consume(DATA_FAKER.numerify("123###"));
+        blackhole.consume(DATA_FAKER.expression("#{numerify '123###'}"));
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    public void optionsExpression(Blackhole blackhole) {
-        blackhole.consume(DATA_FAKER.expression("#{options.option 'a','b','c','d'}"));
-    }
-
-    @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    public void regexifyExpression(Blackhole blackhole) {
+    public void regexify(Blackhole blackhole) {
         blackhole.consume(DATA_FAKER.expression("#{regexify '\\.\\*\\?\\+'}"));
     }
 }
