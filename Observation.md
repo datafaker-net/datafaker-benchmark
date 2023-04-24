@@ -5,7 +5,7 @@
 
 | Project      | Java Version                                        | Mode | Cnt | Score               | Units |
 |:-------------|:----------------------------------------------------|:-----|:----|:--------------------|:------|
-| Datafaker    | JDK 17.0.5, OpenJDK 64-Bit Server VM, 17.0.5+8      | avgt | 10  | 902.891 ± 46.091    | ms/op |
+| Datafaker    | JDK 17.0.5, OpenJDK 64-Bit Server VM, 17.0.5+8      | avgt | 10  | 829.780 ± 12.624    | ms/op |
 | Kotlin Faker | JDK 17.0.5, OpenJDK 64-Bit Server VM, 17.0.5+8      | avgt | 10  | 745.148 ± 49.614    | ms/op |
 
 **ATTENTION!** In this test we measure not throughput but the average time of one operation => lower is better.
