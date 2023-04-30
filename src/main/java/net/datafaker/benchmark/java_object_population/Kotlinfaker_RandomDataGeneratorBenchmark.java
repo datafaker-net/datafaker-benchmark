@@ -32,7 +32,7 @@ public class Kotlinfaker_RandomDataGeneratorBenchmark {
 	public static void main(String[] args) throws RunnerException {
 
 		Options opt = new OptionsBuilder()
-				.include(Datafaker_KotlinFakerBenchmark.class.getSimpleName())
+				.include(Kotlinfaker_RandomDataGeneratorBenchmark.class.getSimpleName())
 				.build();
 
 		new Runner(opt).run();
