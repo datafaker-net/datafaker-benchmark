@@ -1,4 +1,4 @@
-package net.datafaker.benchmark.java_object_population;
+package net.datafaker.benchmark.java_object_population.single_object;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
@@ -8,7 +8,6 @@ import io.github.serpro69.kfaker.provider.misc.RandomClassProvider;
 import io.github.serpro69.kfaker.provider.misc.RandomProviderConfig;
 import kotlin.jvm.JvmClassMappingKt;
 import kotlin.reflect.KClass;
-import net.datafaker.benchmark.kotlinfakerbenchmark.Datafaker_KotlinFakerBenchmark;
 import org.jetbrains.annotations.NotNull;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;

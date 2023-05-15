@@ -1,4 +1,4 @@
-package net.datafaker.benchmark.java_object_population;
+package net.datafaker.benchmark.java_object_population.sequence;
 
 import java.util.Locale;
 import java.util.Random;
@@ -28,12 +28,12 @@ import static net.datafaker.transformations.Field.field;
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 @State(Scope.Benchmark)
 @Fork(value = 2, jvmArgs = {"-Xms2G", "-Xmx2G"})
-public class Datafaker_JavaObjectPopulateBenchmark {
+public class Datafaker_JavaObjectsPopulateBenchmark {
 
 	public static void main(String[] args) throws RunnerException {
 
 		Options opt = new OptionsBuilder()
-				.include(Datafaker_JavaObjectPopulateBenchmark.class.getSimpleName())
+				.include(Datafaker_JavaObjectsPopulateBenchmark.class.getSimpleName())
 				.build();
 
 		new Runner(opt).run();
@@ -41,10 +41,11 @@ public class Datafaker_JavaObjectPopulateBenchmark {
 
 	@Benchmark
 	@BenchmarkMode(Mode.AverageTime)
-	public void javaObjectPopulate(Blackhole blackhole) {
-		for (int i = 0; i < 1000_000; i++) {
-			blackhole.consume(BaseFaker.populate(MyClass.class));
-		}
+	public void javaCollectionObjectsPopulate(Blackhole blackhole) {
+		blackhole.consume(faker
+				.collection(() -> BaseFaker.populate(MyClass.class))
+				.maxLen(1000_000)
+				.generate());
 	}
 
 	@FakeForSchema("defaultSchema")

@@ -1,6 +1,7 @@
-package net.datafaker.benchmark.java_object_population;
+package net.datafaker.benchmark.java_object_population.sequence;
 
 import java.util.concurrent.TimeUnit;
+
 import org.instancio.Instancio;
 import org.instancio.generators.Generators;
 import org.openjdk.jmh.annotations.Benchmark;
@@ -22,12 +23,12 @@ import static org.instancio.Select.field;
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 @State(Scope.Benchmark)
 @Fork(value = 2, jvmArgs = {"-Xms2G", "-Xmx2G"})
-public class Instancio_RandomDataGeneratorBenchmark {
+public class Instancio_JavaObjectsPopulationBenchmark {
 
 	public static void main(String[] args) throws RunnerException {
 
 		Options opt = new OptionsBuilder()
-				.include(Instancio_RandomDataGeneratorBenchmark.class.getSimpleName())
+				.include(Instancio_JavaObjectsPopulationBenchmark.class.getSimpleName())
 				.build();
 
 		new Runner(opt).run();
@@ -35,7 +36,7 @@ public class Instancio_RandomDataGeneratorBenchmark {
 
 	@Benchmark
 	@BenchmarkMode(Mode.AverageTime)
-	public void instancioFakerTest(Blackhole blackhole) {
+	public void instancioSequenceFakerTest(Blackhole blackhole) {
 			blackhole.consume(
 					Instancio.ofList(MyClass.class)
 							.size(1000_000)
