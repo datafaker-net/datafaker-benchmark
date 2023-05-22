@@ -1,7 +1,6 @@
 package net.datafaker.benchmark.simplemethods;
 
-import net.datafaker.formats.Format;
-import net.datafaker.providers.base.Name;
+
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
@@ -17,7 +16,6 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.concurrent.TimeUnit;
 
-import static net.andreinc.mockneat.unit.seq.IntSeq.intSeq;
 import static net.andreinc.mockneat.unit.text.CSVs.csvs;
 import static net.andreinc.mockneat.unit.user.Names.names;
 
@@ -47,17 +45,5 @@ public class MockneatSimpleMethods {
                 .get());
     }
 
-    @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    public void fullname(Blackhole blackhole) {
-        blackhole.consume(Format.toCsv(
-                        DATA_FAKER.<Name>collection()
-                                .suppliers(DATA_FAKER::name)
-                                .build())
-                .columns(Name::firstName, Name::lastName)
-                .header(false)
-                .separator("|")
-                .limit(10).build().get());
-    }
 
 }
