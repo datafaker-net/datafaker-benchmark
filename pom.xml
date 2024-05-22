@@ -13,18 +13,22 @@
         <java.version>8</java.version>
         <arakelyan.version>3.10.0</arakelyan.version>
         <blocoio.version>1.2.7</blocoio.version>
-        <datafaker.version>2.0.0-SNAPSHOT</datafaker.version>
+        <datafaker.version>2.2.2</datafaker.version>
         <javafaker.version>1.0.2</javafaker.version>
         <instancio.version>2.15.0</instancio.version>
         <jfairy.version>0.6.5</jfairy.version>
         <jmh.version>1.35</jmh.version>
-        <kotlinfaker.version>1.14.0</kotlinfaker.version>
+        <kotlinfaker.version>1.16.0</kotlinfaker.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <kotlin.version>1.8.20</kotlin.version>
+        <maven.exec.version>1.6.0</maven.exec.version>
+        <kotlin.version>1.9.22</kotlin.version>
         <uberjar.name>benchmarks</uberjar.name>
         <mockneat.version>0.4.2</mockneat.version>
         <uberjar.name>benchmarks</uberjar.name>
+        <benchmarkExcludes></benchmarkExcludes>
+        <benchmarks>.*</benchmarks>
+        <executableJava>java</executableJava>
     </properties>
 
     <repositories>
@@ -183,5 +187,90 @@
         </pluginManagement>
     </build>
 
+    <profiles>
+        <profile>
+            <id>benchmark</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>benchmarks</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>${maven.exec.version}</version>
+                        <executions>
+                            <execution>
+                                <id>run-benchmarks</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <classpathScope>test</classpathScope>
+                            <executable>${executableJava}</executable>
+                            <arguments>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>org.openjdk.jmh.Main</argument>
+                                <!--shouldFailOnError-->
+                                <argument>-foe</argument>
+                                <argument>true</argument>
+                                <argument>-e</argument>
+                                <argument>${benchmarkExcludes}</argument>
+                                <argument>-rf</argument>
+                                <argument>csv</argument>
+                                <argument>${benchmarks}</argument>
+                            </arguments>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <version>3.2.0</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                                <configuration>
+                                    <finalName>benchmarks</finalName>
+                                    <transformers>
+                                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                            <mainClass>org.openjdk.jmh.Main</mainClass>
+                                        </transformer>
+                                        <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                            <resource>reference.conf</resource>
+                                        </transformer>
+                                        <!-- The service transformer is needed to merge META-INF/services files -->
+                                        <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                        <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer">
+                                            <projectName>Apache Flink</projectName>
+                                        </transformer>
+                                    </transformers>
+                                    <filters>
+                                        <filter>
+                                            <artifact>*</artifact>
+                                            <excludes>
+                                                <exclude>META-INF/*.SF</exclude>
+                                                <exclude>META-INF/*.DSA</exclude>
+                                                <exclude>META-INF/*.RSA</exclude>
+                                            </excludes>
+                                        </filter>
+                                    </filters>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
