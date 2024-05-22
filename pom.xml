@@ -26,7 +26,7 @@
         <uberjar.name>benchmarks</uberjar.name>
         <mockneat.version>0.4.2</mockneat.version>
         <uberjar.name>benchmarks</uberjar.name>
-        <benchmarkExcludes></benchmarkExcludes>
+        <benchmarkExcludes>net.datafaker.benchmark.generate_one_hour.*</benchmarkExcludes>
         <benchmarks>.*</benchmarks>
         <executableJava>java</executableJava>
     </properties>

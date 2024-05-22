@@ -11,3 +11,4 @@ META-INF/
 bin/
 site
 .mvn/wrapper/maven-wrapper.jar
+jmh-result.csv
