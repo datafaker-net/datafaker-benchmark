@@ -15,7 +15,7 @@
         <blocoio.version>1.2.7</blocoio.version>
         <datafaker.version>2.2.2</datafaker.version>
         <javafaker.version>1.0.2</javafaker.version>
-        <instancio.version>4.6.0</instancio.version>
+        <instancio.version>4.7.0</instancio.version>
         <jfairy.version>0.6.5</jfairy.version>
         <jmh.version>1.37</jmh.version>
         <kotlinfaker.version>1.16.0</kotlinfaker.version>
