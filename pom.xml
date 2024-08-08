@@ -24,7 +24,7 @@
         <maven.exec.version>3.4.0</maven.exec.version>
         <kotlin.version>2.0.10</kotlin.version>
         <uberjar.name>benchmarks</uberjar.name>
-        <mockneat.version>0.4.2</mockneat.version>
+        <mockneat.version>0.4.8</mockneat.version>
         <uberjar.name>benchmarks</uberjar.name>
         <benchmarkExcludes>net.datafaker.benchmark.generate_one_hour.*</benchmarkExcludes>
         <benchmarks>.*</benchmarks>
