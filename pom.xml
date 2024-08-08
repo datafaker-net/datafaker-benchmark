@@ -31,13 +31,6 @@
         <executableJava>java</executableJava>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>jcenter</id>
-            <url>https://jcenter.bintray.com/</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -45,9 +38,9 @@
             <version>${kotlin.version}</version>
         </dependency>
         <dependency>
-            <groupId>net.andreinc.mockneat</groupId>
+            <groupId>net.andreinc</groupId>
             <artifactId>mockneat</artifactId>
-            <version>${mockneat.version}</version>
+            <version>0.4.8</version>
         </dependency>
         <dependency>
             <groupId>io.github.serpro69</groupId>
