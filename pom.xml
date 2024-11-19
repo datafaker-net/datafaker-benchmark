@@ -13,7 +13,7 @@
         <java.version>17</java.version>
         <arakelyan.version>4.0.1</arakelyan.version>
         <blocoio.version>1.2.7</blocoio.version>
-        <datafaker.version>2.3.1</datafaker.version>
+        <datafaker.version>2.4.2</datafaker.version>
         <javafaker.version>1.0.2</javafaker.version>
         <instancio.version>5.0.2</instancio.version>
         <jfairy.version>0.6.5</jfairy.version>
@@ -21,7 +21,7 @@
         <kotlinfaker.version>1.16.0</kotlinfaker.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven.exec.version>3.4.0</maven.exec.version>
+        <maven.exec.version>3.5.0</maven.exec.version>
         <kotlin.version>2.0.21</kotlin.version>
         <uberjar.name>benchmarks</uberjar.name>
         <mockneat.version>0.4.8</mockneat.version>
