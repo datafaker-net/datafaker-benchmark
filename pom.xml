@@ -13,7 +13,7 @@
         <java.version>17</java.version>
         <arakelyan.version>4.0.1</arakelyan.version>
         <blocoio.version>1.2.7</blocoio.version>
-        <datafaker.version>2.4.2</datafaker.version>
+        <datafaker.version>2.4.4</datafaker.version>
         <javafaker.version>1.0.2</javafaker.version>
         <instancio.version>5.4.0</instancio.version>
         <jfairy.version>0.6.5</jfairy.version>
